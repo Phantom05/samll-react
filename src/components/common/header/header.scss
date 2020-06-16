@@ -1,0 +1,28 @@
+@import 'styles';
+
+.PlainHeader {
+  padding: 10px;
+  border-bottom: 1px solid $gray;
+
+  .PlainHeader__link {
+    font-size: 14px;
+    @include font(14, $black);
+    @include link-underline($black, 1px, 0.25s, "true");
+
+    &.name {
+      letter-spacing: -1px;
+    }
+  }
+
+  .PlainHeader__profile {
+    &.box {
+      float: right;
+      font-size: 14px;
+      @include font(14, $black);
+    }
+
+    &.name {
+      letter-spacing: -1px;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+@import 'styles';
+
+.WordGame {
+  transition: 0.2s;
+
+  &.unActive {
+    opacity: 0;
+  }
+
+  &.result,
+  &.home {
+    opacity: 0;
+    transition: 0.2s;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .word__box {
+    // @include positionCenterCenter;
+  }
+
+  .word__rows {
+    margin-bottom: 12px;
+    @include floatClear;
+
+    &.center {
+      text-align: center;
+    }
+  }
+
+  .word__btn {
+    display: inline-block;
+    border: 0;
+    cursor: pointer;
+    padding: 7px 35px;
+    background: $blue;
+    color: $white;
+    outline: none;
+    @include PlainButton();
+
+    &.input {
+      width: 200px;
+      border-radius: 10px;
+    }
+
+    &[type='button'] {
+      padding: 7px 50px;
+    }
+
+    &[type='input'] {
+      background: $white;
+      cursor: text;
+      color: $black;
+      border: 1px solid $gray;
+      padding: 6px 13px;
+    }
+  }
+
+  .word__display {
+    &.item {
+      float: left;
+      width: calc(100% / 2);
+      letter-spacing: -1px;
+
+      @include font(13px) {
+        font-weight: bold;
+      }
+    }
+
+    &.score {
+      text-align: right;
+    }
+  }
+
+  .word__question {
+    letter-spacing: -1px;
+    padding: 15px 0;
+
+    @include font(28px) {
+      font-weight: bold;
+    }
+  }
+
+  .result__info {
+    font-weight: bold;
+    letter-spacing: -1px;
+
+    &.title {
+      @include font(20px);
+      margin-bottom: 30px;
+    }
+
+    &.score {
+      margin-bottom: 25px;
+
+      @include font(21px) {
+        font-weight: bold;
+      }
+    }
+
+    &.average {
+      @include font(14px);
+      margin-bottom: 25px;
+    }
+  }
+}

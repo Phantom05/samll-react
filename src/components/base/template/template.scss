@@ -1,0 +1,9 @@
+@import "styles";
+
+.PlainTemplate {
+  .PlainTemplate__content {
+    @include positionCenterCenter;
+
+    padding: 20px;
+  }
+}

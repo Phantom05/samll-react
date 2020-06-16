@@ -1,0 +1,146 @@
+/*
+ * NOTE: grid layout media query
+ */
+@mixin create-mq($breakpoint, $min-or-max) {
+  @if ($breakpoint==0) {
+    @content;
+  }
+
+  @else {
+    @media screen and (#{$min-or-max}-width: $breakpoint *1px) {
+      @content;
+    }
+  }
+}
+
+/*
+ * NOTE: grid layout
+ */
+@mixin create-col-classes($modifier, $grid-cols, $breakpoint) {
+  @include create-mq($breakpoint, 'min') {
+    .col#{$modifier}-offset-0 {
+      margin-left: 0;
+    }
+
+    @for $i from 1 through $grid-cols {
+      .col#{$modifier}-#{$i} {
+        flex-basis: (100 / ($grid-cols / $i)) * 1%;
+      }
+
+      .col#{$modifier}-offset-#{$i} {
+        margin-left: (100 / ($grid-cols / $i)) * 1%;
+      }
+    }
+  }
+}
+
+/*
+ * NOTE: animation link underline
+ */
+@mixin link-underline($color: $blue, $size: 2px, $duration: 0.25s, $centered: 'false') {
+  color: $color;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+
+  &:before {
+    background-color: $color;
+    content: '';
+    height: $size;
+    position: absolute;
+    bottom: 0 - ($size/2);
+    transition: width $duration ease-in-out;
+    top: 125%;
+    width: 0;
+
+    @if $centered=='true' {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &:hover {
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+
+/*
+ * NOTE: loading spinner
+ */
+@mixin spinner($size:27px, $color:$blue) {
+  width: $size;
+  height: $size;
+  border: solid 2px transparent;
+  border-top-color: $color;
+  border-left-color: $color;
+  border-bottom-color: $color;
+  border-radius: 50%;
+  animation: loading-bar-spinner 1s linear infinite;
+
+  @keyframes loading-bar-spinner {
+    0% {
+      transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/*
+ * NOTE: float clear
+ */
+@mixin floatClear {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+/*
+ * NOTE: position center center
+ */
+@mixin positionCenterCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*
+ * NOTE: font preset
+ */
+@mixin font($size: 14px, $color: $black) {
+  color: $color;
+  font-size: $size;
+  font-family: sans-serif;
+  @content;
+}
+
+/*
+ * NOTE: basic button
+ */
+@mixin PlainButton {
+  color: $white;
+  background: $blue;
+  padding: 5px 20px;
+  border: 1px solid $blue;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+
+  &.round {
+    border-radius: 5px;
+  }
+
+  &:hover {
+    background: $deepBlue;
+  }
+}

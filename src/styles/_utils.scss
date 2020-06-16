@@ -1,0 +1,19 @@
+.block {
+  display: block;
+}
+
+.container {
+  max-width: $grid__bp-md * 1px;
+  margin: 0 auto;
+
+  &--fluid {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
